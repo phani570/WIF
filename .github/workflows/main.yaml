@@ -1,10 +1,10 @@
 name: List services in GCP
 on:
+  workflow_dispatch:
   pull_request:
     branches:
       - main
       - feature/*
-  workflow_dispatch:
 
 permissions:
   id-token: write
@@ -25,4 +25,5 @@ jobs:
       name: 'gcloud'
       run: |-
         gcloud services enable compute.googleapis.com
-        gcloud compute instances create githubvm --zone=us-central1-a --project=user-ongqgawtielk
+        gcloud compute instances list
+        # gcloud compute instances create githubvm --zone=us-central1-a --project=user-ongqgawtielk
