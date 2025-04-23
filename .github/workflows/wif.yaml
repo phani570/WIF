@@ -1,0 +1,29 @@
+name: GCP WIF
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+      - feature/*
+
+permissions:
+  id-token: write
+
+jobs:
+  Get_OIDC_ID_token:
+    runs-on: ubuntu-latest
+    steps:
+    - id: 'auth'
+      name: 'Authenticate to GCP'
+      uses: 'google-github-actions/auth@v2.0.1'
+      with:
+          create_credentials_file: 'true'
+          project_id: 'user-ongqgawtielk'
+          workload_identity_provider: 'projects/991597667125/locations/global/workloadIdentityPools/github/providers/github'
+
+    - id: 'gcloud'
+      name: 'gcloud'
+      run: |-
+        gcloud services enable compute.googleapis.com
+        gcloud compute instances list
+        # gcloud compute instances create githubvm --zone=us-central1-a --project=user-ongqgawtielk
