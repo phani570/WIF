@@ -19,7 +19,7 @@ jobs:
       uses: 'google-github-actions/auth@v2.0.1'
       with:
           create_credentials_file: 'true'
-          project-id: 'user-mmqwxblaebws'
+          project_id: 'user-mmqwxblaebws'
           workload_identity_provider: 'https://iam.googleapis.com/projects/21919101738/locations/global/workloadIdentityPools/github/providers/github'
 
     - id: 'gcloud'
