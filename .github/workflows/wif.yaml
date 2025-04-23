@@ -1,4 +1,4 @@
-name: List services in GCP
+name: GCP WIF
 on:
   workflow_dispatch:
   pull_request:
